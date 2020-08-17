@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfopagService } from '../../services/infopag.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   date:number = new Date().getFullYear();
-  namepag:string = "Fabian App";
+  
 
-  constructor() { }
+  constructor(public infopagsrv:InfopagService) { }
 
   ngOnInit(): void {
   }

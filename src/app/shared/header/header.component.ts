@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfopagService } from '../../services/infopag.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  name:string = "Fabian App";
+  
 
-  constructor() { }
+  constructor(public infopagsrv:InfopagService) { }
 
   ngOnInit(): void {
   }
