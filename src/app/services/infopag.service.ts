@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InfoPagina } from '../models/info-pagina.interface';
+import { Observable } from 'rxjs';
+import { TeamJob } from '../models/equipo.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +14,15 @@ export class InfopagService {
   equipo:any[];
   constructor(public http:HttpClient) {
     this.cargarinfo();
-    this.cargarequipo();
    }
+
+  // cargainfo(): Observable<InfoPagina[]>{
+  //   return this.http.get<InfoPagina[]>('assets/data/data_pagina.json');
+  // }
+
+  cargarequipo(): Observable<TeamJob[]>{
+    return this.http.get<TeamJob[]>('https://angular-curso-f8334.firebaseio.com/equipo.json');
+  }
 
   private cargarinfo(){
     this.http.get('assets/data/data_pagina.json').subscribe((data:InfoPagina)=>{
@@ -26,15 +35,16 @@ export class InfopagService {
     });
    }
 
-  private cargarequipo(){
-    console.log("dentro del metodo que nos regresa firebase");
-    this.http.get('https://angular-curso-f8334.firebaseio.com/equipo.json').subscribe((data:any) =>{
-      console.log(data);
-      this.equipo = data;
-    }, err=>{
-      console.log(err);
-    })
-  }
+  // private cargarequipo(){
+  //   console.log("dentro del metodo que nos regresa firebase");
+  //   this.http.get('https://angular-curso-f8334.firebaseio.com/equipo.json').subscribe((data:any) =>{
+  //     console.log(data);
+  //     this.equipo = data;
+  //     this.cargada = true;
+  //   }, err=>{
+  //     console.log(err);
+  //   });
+  // }
 
 
 }

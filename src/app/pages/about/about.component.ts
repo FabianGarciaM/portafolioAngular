@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InfopagService } from '../../services/infopag.service';
+import { TeamJob } from '../../models/equipo.interface';
 
 
 @Component({
@@ -8,16 +9,21 @@ import { InfopagService } from '../../services/infopag.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  team:any[] = [];
+  team:TeamJob[] = [];
 
   constructor(public infopagsrv:InfopagService) { }
 
-  ngOnInit(): void {
-    console.log("********************************+");
-   this.team = this.infopagsrv.equipo;
-    console.log(this.team);
+  ngOnInit(){
+    this.getAllteam();
   }
 
+  getAllteam(){
+    this.infopagsrv.cargarequipo().subscribe(data =>{
+      this.team = data;
+    },err =>{
+      console.log("err" + err);
+    })
+  }
 
 
 }

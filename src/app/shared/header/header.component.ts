@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(public infopagsrv:InfopagService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
   }
 
 }

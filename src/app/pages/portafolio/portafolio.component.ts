@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductosService } from '../../services/productos.service';
+import { Product } from '../../models/product.interfaz';
 
 @Component({
   selector: 'app-portafolio',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortafolioComponent implements OnInit {
 
-  constructor() { }
+  Product:Product[];
+  iscargadoProd:boolean = true;
+  constructor(public productsrv:ProductosService) { 
+    
+  }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.cargaProd();
+  }
+
+  cargaProd(){
+    this.productsrv.getAllProducts().subscribe(data =>{
+      this.Product = data;
+      console.log(data);
+      this.iscargadoProd = false;
+      // setTimeout(()=>{
+      //   this.iscargadoProd = false;
+      // }, 2000);
+    },err=>{
+      console.log("error!" + err);
+      this.iscargadoProd = true;
+    })
   }
 
 }
