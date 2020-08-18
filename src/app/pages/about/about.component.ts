@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfopagService } from '../../services/infopag.service';
 
 
 @Component({
@@ -7,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  team:any[] = [];
 
-  constructor() { }
+  constructor(public infopagsrv:InfopagService) { }
 
   ngOnInit(): void {
+    console.log("********************************+");
+   this.team = this.infopagsrv.equipo;
+    console.log(this.team);
   }
+
+
 
 }
