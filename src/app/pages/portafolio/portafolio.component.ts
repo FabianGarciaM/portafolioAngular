@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
-import { Product } from '../../models/product.interfaz';
+import { Product } from '../../models/product.interface';
 
 @Component({
   selector: 'app-portafolio',
@@ -20,17 +20,18 @@ export class PortafolioComponent implements OnInit {
   }
 
   cargaProd(){
-    this.productsrv.getAllProducts().subscribe(data =>{
-      this.Product = data;
-      console.log(data);
-      this.iscargadoProd = false;
-      // setTimeout(()=>{
-      //   this.iscargadoProd = false;
-      // }, 2000);
-    },err=>{
-      console.log("error!" + err);
-      this.iscargadoProd = true;
-    })
+    this.productsrv.getAllProducts();
+    // this.productsrv.getAllProducts().subscribe(data =>{
+    //   this.Product = data;
+    //   console.log(data);
+    //   this.iscargadoProd = false;
+    //   // setTimeout(()=>{
+    //   //   this.iscargadoProd = false;
+    //   // }, 2000);
+    // },err=>{
+    //   console.log("error!" + err);
+    //   this.iscargadoProd = true;
+    // })
   }
 
 }

@@ -30,7 +30,8 @@
           </li>
         </ul>
         <form class="rk-search">
-          <input type="text" placeholder="Search" id="urku-search" class="rk-search-field">
+          <!--txtsearch esa una referencia al buscador sin usar un ngModel-->
+          <input type="text" placeholder="Buscar" (keyup)="search(textsearch.value)" #textsearch id="urku-search" class="rk-search-field">
           <label for="urku-search">
             <svg>
               <use xlink:href="assets/img/symbols.svg#icon-search"></use>
